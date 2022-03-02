@@ -1,0 +1,28 @@
+<aura:component controller="getRecentlyViewed" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="recs" type="sObject[]"/>
+    
+    <table class="slds-table slds-table_bordered slds-table_striped">
+            
+        <!-- Label the columns as id, name, phone -->
+        	<thead>
+              <tr>
+                <th><div title="ID">ID</div></th>
+                <th><div title="Name">Name</div></th>
+                <th><div title="Type">Phone</div></th>
+              </tr>
+            </thead>
+        
+            <tbody>
+              <!-- Use the Apex model and controller to fetch server side data,
+					loop through the responses to populate table cells -->
+              <aura:iteration items="{!v.recs}" var="rec">
+                  <tr>
+                      <td><div title="{!rec.Id}">{!rec.Id}</div></td>
+                      <td><div title="{!rec.Name}">{!rec.Name}</div></td>
+                      <td><div title="{!rec.Phone}">{!rec.Phone}</div></td>
+                  </tr>
+              </aura:iteration>
+            </tbody>
+    </table>     
+</aura:component>
